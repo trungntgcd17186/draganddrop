@@ -1,53 +1,81 @@
-import React, { useState } from "react";
+import React from "react";
 import "./style.css";
 
 function DragDrop(props) {
-  function allowDrop(e) {
+  const handleAllowDrop = (e) => {
     e.preventDefault();
-  }
+  };
 
-  function drag(e) {
+  const handleDrag = (e) => {
+    //Gửi dữ liệu
     e.dataTransfer.setData("text", e.target.id);
-  }
+  };
 
-  function drop(e) {
+  const handleDrop = (e) => {
     e.preventDefault();
-    var data = e.dataTransfer.getData("text");
+    //Lấy dữ liệu
+    const data = e.dataTransfer.getData("text");
     e.target.appendChild(document.getElementById(data));
-  }
+
+    //Xoá className hovered sau khi người dùng thả ảnh.
+    e.target.setAttribute("class", "empty");
+  };
+
+  //Xử lý khi người dùng đang kéo ảnh vào ô chứa.
+  const handleDragEnter = (e) => {
+    e.target.setAttribute("class", "empty hovered");
+  };
+
+  //Xử lý khi người dùng đang kéo ảnh rời khỏi ô chứa.
+  const handleDragLeave = (e) => {
+    e.target.setAttribute("class", "empty");
+  };
+
   return (
     <div className="container">
       <div
         className="empty"
-        onDrop={(e) => drop(e)}
-        onDragOver={(e) => allowDrop(e)}
+        onDrop={(e) => handleDrop(e)}
+        onDragOver={(e) => handleAllowDrop(e)}
+        onDragLeave={(e) => handleDragLeave(e)}
+        onDragEnter={(e) => handleDragEnter(e)}
+        // onMouseOut={handleMouseOut}
       >
         <img
           id="drag1"
+          src="https://source.unsplash.com/random/150x150"
           draggable="true"
-          onDragStart={(e) => drag(e)}
+          onDragStart={(e) => handleDrag(e)}
           alt="anh co the keo tha"
         />
       </div>
       <div
         className="empty"
-        onDrop={(e) => drop(e)}
-        onDragOver={(e) => allowDrop(e)}
+        onDrop={(e) => handleDrop(e)}
+        onDragOver={(e) => handleAllowDrop(e)}
+        onDragLeave={(e) => handleDragLeave(e)}
+        onDragEnter={(e) => handleDragEnter(e)}
       ></div>
       <div
         className="empty"
-        onDrop={(e) => drop(e)}
-        onDragOver={(e) => allowDrop(e)}
+        onDrop={(e) => handleDrop(e)}
+        onDragOver={(e) => handleAllowDrop(e)}
+        onDragLeave={(e) => handleDragLeave(e)}
+        onDragEnter={(e) => handleDragEnter(e)}
       ></div>
       <div
         className="empty"
-        onDrop={(e) => drop(e)}
-        onDragOver={(e) => allowDrop(e)}
+        onDrop={(e) => handleDrop(e)}
+        onDragOver={(e) => handleAllowDrop(e)}
+        onDragLeave={(e) => handleDragLeave(e)}
+        onDragEnter={(e) => handleDragEnter(e)}
       ></div>
       <div
         className="empty"
-        onDrop={(e) => drop(e)}
-        onDragOver={(e) => allowDrop(e)}
+        onDrop={(e) => handleDrop(e)}
+        onDragOver={(e) => handleAllowDrop(e)}
+        onDragLeave={(e) => handleDragLeave(e)}
+        onDragEnter={(e) => handleDragEnter(e)}
       ></div>
     </div>
   );

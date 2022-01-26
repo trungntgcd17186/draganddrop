@@ -2,23 +2,27 @@
   display: flex;
 }
 
+.empty {
+  height: 150px;
+  width: 150px;
+  margin-left: 10px;
+  border: solid 3px black;
+  background: white;
+}
+
 .hovered {
   background-color: #333;
   border-color: white;
   border-style: dashed;
 }
 
-.empty {
-  height: 150px;
-  width: 150px;
-  margin: 10px;
-  border: solid 3px black;
-  background: white;
+img {
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
 }
 
-img {
-  background-image: url("https://source.unsplash.com/random/150x150");
-  height: 145px;
-  width: 145px;
-  cursor: pointer;
+#drag1 {
+  margin: 0;
+  border: 0;
 }
